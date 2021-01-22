@@ -3,7 +3,7 @@ const Login = (props) => {
     //https://www.youtube.com/watch?v=t0wZYzx0qdY
     return (
         <div>
-            <h3>Login</h3>
+            <h3>Login page</h3>
         </div>
     )
 }
