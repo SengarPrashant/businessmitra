@@ -1,9 +1,15 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Head from 'next/head';
 
 const Layout = ({ children }) => {
+
+
+    useEffect(()=>{
+         const height = document.getElementById('container').clientHeight;
+    })
+
     return (
         <>
             <Head>
