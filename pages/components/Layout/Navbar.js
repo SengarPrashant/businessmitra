@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useEffect,useRef} from 'react';
 import navStyles from '../../../styles/Nav.module.scss';
 import Link from 'next/link';
 
@@ -9,19 +9,25 @@ const Navbar = () => {
     const toggleMenu=(e)=>setOpenMenue(!openMenu);
 
     return (
-        <header className={navStyles.header} id='navheader'>
+        <header className={navStyles.header} id='navheader' >
             <div className={navStyles.logo}>
                 <div style={{fontWeight:'14px', fontWeight:'bold'}}>Logo</div>
             </div>
             <ul className={[navStyles.menu,openMenu? navStyles.toggle :''].join(' ')}>
                 <li onClick={toggleMenu}><Link  href='/login'><a>Registration</a></Link></li>
-                <li><a href="#">Trademark</a></li>
+                <li>Trademark
+                    {/* <ul>
+                        <li><a href="#">Trademark 1 </a></li>
+                        <li><a href="#">Trademark 2 </a></li>
+                        <li><a href="#">Trademark 3 </a></li>
+                    </ul> */}
+                </li>
                 <li><a href="#">Intellectual Property</a></li>
                 <li><a href="#">Gst</a></li>
                 <li><a href="#">Income Tax</a></li>
                 <li><a href="#">Compliances</a></li>
                 <li><Link href='/login'><a>Login / Register</a></Link></li>
-                <li className={navStyles.close} onClick={toggleMenu} >X</li>
+                <div className={navStyles.close} onClick={toggleMenu} >X</div>
             </ul>
             <div className={navStyles.burger} onClick={toggleMenu}>Menu</div>
         </header>

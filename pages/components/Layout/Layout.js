@@ -1,23 +1,22 @@
 import React,{useState,useEffect} from 'react';
 import Navbar from './Navbar';
+import Nav from './Nav';
+import Navigation from './Navigation';
 import Footer from './Footer';
 import Head from 'next/head';
 
 const Layout = ({ children }) => {
-
-
-    useEffect(()=>{
-         const height = document.getElementById('container').clientHeight;
-    })
-
+ 
     return (
         <>
             <Head>
                 <title>Create Next App</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Navbar />
-            <div style={{ paddingTop: 50, minHeight: '90vh' }}>
+            {/* <Navbar /> */}
+            <Nav />
+            {/* <Navigation /> */}
+            <div style={{ paddingTop: 70, minHeight: '90vh', textAlign:'center' }} >
                 {children}
             </div>
             <Footer />
