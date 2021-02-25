@@ -10,3 +10,10 @@ export const addCity = (_city) => {
        payload: ''
      }
  }
+
+ export const addAppText = () => {
+  return {
+     type: "appText",
+     payload: ''
+   }
+}

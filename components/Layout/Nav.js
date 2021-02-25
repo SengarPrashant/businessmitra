@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import navStyles from '../../../styles/Nav.module.scss';
+import navStyles from '../../styles/Nav.module.scss';
 import Link from 'next/link';
 import { useRouter, Router } from 'next/router';
 import {useSelector,useDispatch} from 'react-redux';
-import {addCity,removeCity} from '../../../redux/actions/configActions';
+import {addCity,removeCity} from '../../redux/actions/configActions';
 
 //https://www.youtube.com/watch?v=a1T5UvQpEDs
 

@@ -4,6 +4,7 @@ import Nav from './Nav';
 import Navigation from './Navigation';
 import Footer from './Footer';
 import Head from 'next/head';
+import HeaderNav from './HeaderNav';
 
 const Layout = ({ children }) => {
  
@@ -13,10 +14,11 @@ const Layout = ({ children }) => {
                 <title>Create Next App</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <HeaderNav />
             {/* <Navbar /> */}
-            <Nav />
+            {/* <Nav /> */}
             {/* <Navigation /> */}
-            <div style={{ paddingTop: 70, minHeight: '90vh', textAlign:'center' }} >
+            <div style={{fontSize: '1.2rem', paddingTop: 15, minHeight: '90vh', width:'80%', margin:'auto' }} >
                 {children}
             </div>
             <Footer />

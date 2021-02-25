@@ -5,19 +5,16 @@ const Params = (props) => {
     //https://www.youtube.com/watch?v=t0wZYzx0qdY
     //const router=useRouter();
     return (
-        <Content query={props.query} />
+        <Content data={props.data} query={props.query} />
     )
 }
 
-Params.getInitialProps= async(contex)=>{
-    
-    return {query:contex.query}
+export async function getServerSideProps(context) {
+    const resPlans = await getPageData('LLPFirm');
+    //const resData = await getPageInfo('PartnershipFirm');
+    return {
+        props: { data: { plans: resPlans, content: '' }, query: context.query }, // will be passed to the page component as props
+    }
 }
-
-// export async function getServerSideProps(contex) {
-//     // Fetch data from external API
-//     // Pass data to the page via props
-//     return { props: { query:contex.query } }
-// }
 
 export default Params;

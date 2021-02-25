@@ -1,5 +1,5 @@
 import {useState,useEffect,useRef} from 'react';
-import navStyles from '../../../styles/Nav.module.scss';
+import navStyles from '../../styles/Nav.module.scss';
 import Link from 'next/link';
 
 //https://www.youtube.com/watch?v=a1T5UvQpEDs

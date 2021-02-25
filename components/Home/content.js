@@ -1,8 +1,14 @@
+import {useEffect} from 'react';
 import Head from 'next/head';
-import styles from '../../../styles/Home.module.scss'
+import styles from '../../styles/Home.module.scss'
+import {addAppText} from '../../redux/actions/configActions';
+import {useDispatch,useSelector} from 'react-redux';
 
 const Content = ({ query }) => {
     //https://www.youtube.com/watch?v=t0wZYzx0qdY
+    useEffect(()=>{
+        
+    },[])
     return (
         <div className={styles.container}>
             <Head>

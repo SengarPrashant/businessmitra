@@ -1,4 +1,4 @@
-import classes from '../../../styles/Navigation.module.scss';
+import classes from '../../styles/Navigation.module.scss';
 import Link from 'next/link';
 
 const Navigation = () => {

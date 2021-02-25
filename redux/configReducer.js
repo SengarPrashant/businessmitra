@@ -1,4 +1,4 @@
-const initialstate={city:''}
+const initialstate={city:'',appText:{}}
 
 export const configReducer=(state=initialstate,action)=> {
     switch (action.type) {
@@ -7,6 +7,9 @@ export const configReducer=(state=initialstate,action)=> {
             break;
         case 'removecity':
             return {...state,city:''}
+            break;
+        case 'appText':
+            return {...state,appText:action.payload}
             break;
         default:
             return state

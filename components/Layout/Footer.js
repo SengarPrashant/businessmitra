@@ -1,4 +1,4 @@
-import styles from '../../../styles/Home.module.scss';
+import styles from '../../styles/Home.module.scss';
 import { Row, Col, Container } from 'react-bootstrap';
 import Link from 'next/link';
 
