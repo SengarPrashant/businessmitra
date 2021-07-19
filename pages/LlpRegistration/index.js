@@ -10,9 +10,9 @@ const Index = (props) => {
 
 export async function getServerSideProps(context) {
     const resPlans = await getPageData('LLPFirm');
-    //const resData = await getPageInfo('PartnershipFirm');
+    const resData = await getPageInfo('LLPFirm');
     return {
-        props: { data: { plans: resPlans, content: '' }, query: context.query }, // will be passed to the page component as props
+        props: { data: { plans: resPlans, content: resData }, query: context.query }, // will be passed to the page component as props
     }
 }
 

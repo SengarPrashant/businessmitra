@@ -1,4 +1,4 @@
-// @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,200;1,300&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,200;1,300&display=swap');
 
 $enable-shadows: true;
 $primary: #0C4160;
@@ -9,10 +9,14 @@ $border : #ced4da;
 $orange :darkorange;
 $info : #17a2b8;
 
-// body{
-//   font-family: 'Montserrat', sans-serif !important;
-// }
-
+body{
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 13px;
+}
+.icon8{
+  width: 8px;
+  height: 8px;
+}
 .icon16{
   width: 16px;
   height: 16px;
@@ -22,7 +26,7 @@ $info : #17a2b8;
   }
 .card-title{
  color: $primary;
- font-weight: 400;
+ font-weight: 600 !important;
 }
 .positionUnset{
   position: unset !important,
@@ -72,6 +76,30 @@ a:hover{
 }
 html {
   scroll-behavior: smooth;
+}
+
+.stepper{
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+.stepNumber{
+  color:#fff;  border:3px solid #fff; display: flex; justify-content: center;
+   align-items: center; width: 35px; height: 35px; border-radius: 50%;font-size: 15px;
+}
+.stepLine{
+  height: 2px; flex: 1; background-color: $border; margin-right: 7px; margin-left: 7px
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.tooltip-inner{
+
+}
+.tooltip-end .tooltip-arrow::before{
+  
 }
 
 @import "../node_modules/bootstrap/scss/bootstrap";

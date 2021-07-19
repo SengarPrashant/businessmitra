@@ -4,37 +4,36 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
-const Summary = ({ data}) => {
-    debugger
+const Summary = ({ data }) => {
     const plans = data.isSuccess ? data.data.planTypeList : undefined;
     return (
         <Fragment>
             <Row>
-                    {
-                        plans && plans.map((plan, i) => {
-                            return <Col key={plan.id} sm={4} className='mb-4 mb-md-0'>
-                                <div className='p-4 bg-light'>
-                                    <Row>
-                                        <Col sm={12} md={12} lg={7}><Card.Title>{plan.name} ({plan.type})</Card.Title></Col>
-                                        <Col sm={12} md={12} lg={5} className='text-md-left text-sm-right text-lg-right'>
-                                            <Card.Title className="text-black-50"> Price {plan.price} {plan.currency}</Card.Title>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col sm={12} className='text-justify'>
-                                            {plan.shortSummary}
-                                    <a href="#plans" className='viewMore'>
-                                                <span className='viewMore'>
-                                                    View more <FontAwesomeIcon icon={faArrowRight} className='icon16' />
-                                                </span>
-                                            </a>
-                                        </Col>
-                                    </Row>
-                                </div>
-                            </Col>
-                        })
-                    }
-          </Row>
+                {
+                    plans && plans.map((plan, i) => {
+                        return <Col key={plan.id} sm={12} md={12} lg={4} xl={4} className='mb-4 mb-md-3 mb-sm-2'>
+                            <div className='p-4 bg-light' style={{height:'100%'}}>
+                                <Row>
+                                    <Col sm={12} md={12} lg={7}><Card.Title>{plan.name} ({plan.type})</Card.Title></Col>
+                                    <Col sm={12} md={12} lg={5} className='text-md-left text-sm-right text-lg-right'>
+                                        <Card.Title className="text-black-50"> Price {plan.price} {plan.currency}</Card.Title>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col sm={12} className='text-justify'>
+                                        {plan.shortSummary}
+                                        <a href="#plans" className='viewMore'>
+                                            <span className='viewMore'>
+                                                View more <FontAwesomeIcon icon={faArrowRight} className='icon16' />
+                                            </span>
+                                        </a>
+                                    </Col>
+                                </Row>
+                            </div>
+                        </Col>
+                    })
+                }
+            </Row>
         </Fragment>
     )
 }

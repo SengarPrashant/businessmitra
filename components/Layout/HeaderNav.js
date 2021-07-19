@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import navStyles from '../../styles/Nav.module.scss';
 import Link from 'next/link';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { useRouter, Router } from 'next/router';
@@ -25,14 +24,14 @@ const HeaderNav = () => {
     }, []);
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="primary" sticky='top' variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="primary" sticky='top' variant="dark" className='p-3' >
             <Link href="/" passHref>
                 <Navbar.Brand onClick={(event) => { dispach(removeCity()) }} className={'businesslogo'}>React-Bootstrap</Navbar.Brand>
             </Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    <NavDropdown title="Registration" id="collasible-nav-dropdown">
+                    <NavDropdown renderMenuOnMount={true} title="Registration" id="collasible-nav-dropdown">
                         <Link href={'/PartnershipFirmRegistration' + (config.city ? '/' + config.city : '')} passHref>
                             <NavDropdown.Item >Partnership Firm Registration</NavDropdown.Item>
                         </Link>
@@ -44,7 +43,19 @@ const HeaderNav = () => {
                         {/* <NavDropdown.Divider /> */}
                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                     </NavDropdown>
-                    <NavDropdown title="Trademark" id="collasible-nav-dropdown">
+                    <NavDropdown renderMenuOnMount={true} title="Trademark" id="collasible-nav-dropdown">
+                        <Link href={'/PartnershipFirmRegistration' + (config.city ? '/' + config.city : '')} passHref>
+                            <NavDropdown.Item >1Partnership Firm Registration</NavDropdown.Item>
+                        </Link>
+                        <Link href={'/LlpRegistration' + (config.city ? '/' + config.city : '')} passHref>
+                            <NavDropdown.Item >LLP Registration</NavDropdown.Item>
+                        </Link>
+                        <NavDropdown.Item href="#action/3.1">LLP Registration</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                        {/* <NavDropdown.Divider /> */}
+                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                    </NavDropdown>
+                    <NavDropdown renderMenuOnMount={true}  title="Intellectual Property" id="collasible-nav-dropdown">
                         <Link href={'/PartnershipFirmRegistration' + (config.city ? '/' + config.city : '')} passHref>
                             <NavDropdown.Item >Partnership Firm Registration</NavDropdown.Item>
                         </Link>
@@ -56,7 +67,7 @@ const HeaderNav = () => {
                         {/* <NavDropdown.Divider /> */}
                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                     </NavDropdown>
-                    <NavDropdown title="Intellectual Property" id="collasible-nav-dropdown">
+                    <NavDropdown renderMenuOnMount={true} title="Income Tax" id="collasible-nav-dropdown">
                         <Link href={'/PartnershipFirmRegistration' + (config.city ? '/' + config.city : '')} passHref>
                             <NavDropdown.Item >Partnership Firm Registration</NavDropdown.Item>
                         </Link>
@@ -68,19 +79,7 @@ const HeaderNav = () => {
                         {/* <NavDropdown.Divider /> */}
                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                     </NavDropdown>
-                    <NavDropdown title="Income Tax" id="collasible-nav-dropdown">
-                        <Link href={'/PartnershipFirmRegistration' + (config.city ? '/' + config.city : '')} passHref>
-                            <NavDropdown.Item >Partnership Firm Registration</NavDropdown.Item>
-                        </Link>
-                        <Link href={'/LlpRegistration' + (config.city ? '/' + config.city : '')} passHref>
-                            <NavDropdown.Item >LLP Registration</NavDropdown.Item>
-                        </Link>
-                        <NavDropdown.Item href="#action/3.1">LLP Registration</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        {/* <NavDropdown.Divider /> */}
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="Compliances" id="collasible-nav-dropdown">
+                    <NavDropdown renderMenuOnMount={true} title="Compliances" id="collasible-nav-dropdown">
                         <Link href={'/PartnershipFirmRegistration' + (config.city ? '/' + config.city : '')} passHref>
                             <NavDropdown.Item >Partnership Firm Registration</NavDropdown.Item>
                         </Link>

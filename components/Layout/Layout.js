@@ -1,12 +1,11 @@
-import React,{useState,useEffect} from 'react';
-import Navbar from './Navbar';
-import Nav from './Nav';
-import Navigation from './Navigation';
+import React from 'react';
 import Footer from './Footer';
 import Head from 'next/head';
 import HeaderNav from './HeaderNav';
+import {useWindowSize} from './media'
 
 const Layout = ({ children }) => {
+    const media=useWindowSize();
  
     return (
         <>
@@ -15,10 +14,7 @@ const Layout = ({ children }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <HeaderNav />
-            {/* <Navbar /> */}
-            {/* <Nav /> */}
-            {/* <Navigation /> */}
-            <div style={{fontSize: '1.2rem', paddingTop: 15, minHeight: '90vh', width:'80%', margin:'auto' }} >
+            <div style={{fontSize: '1.2rem', paddingTop: media.md || media.sm ? 10 : 15, minHeight: '90vh', width: media.md || media.sm ? "90%" : "80%", margin:'auto' }} >
                 {children}
             </div>
             <Footer />

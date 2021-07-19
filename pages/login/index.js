@@ -21,11 +21,11 @@ const Login = (props) => {
             <Head>
                 <title>Login in {config.city ? config.city : ''}</title>
             </Head>
-            <Container className='screenCenter'>
+            <Container className='mt-5'>
                 <Card className='positionUnset'>
                     <Card.Body>
                         <Row>
-                            <Col sm={6} className='text-left'>
+                            <Col xs={12} sm={12} md={12} lg={6} xl={6} className='text-left'>
                                 <Card.Title>Login to BusinessMitra</Card.Title>
                                 <div className='text-center'>
                                     <img
@@ -67,7 +67,7 @@ const Login = (props) => {
                                     </Col>
                                 </Row>
                             </Col>
-                            <Col sm={6} className='p-3'>
+                            <Col xs={12} sm={12} md={12} lg={6} xl={6} className='p-3'>
                                 <Row>
                                     <Col>
                                         <Card.Title>

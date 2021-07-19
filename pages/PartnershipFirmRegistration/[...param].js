@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {useRouter} from 'next/router'
 import Content from './components/content';
-import { getPageData, getPageInfo } from '../api/Pages';
+import { getPageData, getPageInfo, getLocationList } from '../api/Pages';
 
 const Params = (props) => {
     debugger
@@ -9,7 +9,7 @@ const Params = (props) => {
     //const router=useRouter();
     return (
         <>
-            <Content data={props.data} query={props.query} />
+            <Content data={props.data} query={props.query} location={props.location} />
         </>
     )
 }
@@ -17,8 +17,13 @@ const Params = (props) => {
 export async function getServerSideProps(context) {
     const resPlans = await getPageData('PartnershipFirm');
     const resData = await getPageInfo('PartnershipFirm');
+    let _location;
+    if(context.query.param){
+        let params=context.query.param;
+        _location = await getLocationList(params[params.length-1], 0, 10, true);
+    }
     return {
-        props: { data: { plans: resPlans, content: resData }, query: context.query }, // will be passed to the page component as props
+        props: { data: { plans: resPlans, content: resData }, query: context.query, location:_location }, // will be passed to the page component as props
     }
 }
 
