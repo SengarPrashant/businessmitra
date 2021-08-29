@@ -19,7 +19,6 @@ const Stepper = ({ steps }) => {
     },[])
 
    const onNextClick=()=>{
-      debugger
         let temp=JSON.parse(JSON.stringify(stepForms));
         temp[currentStep].completed=true;
         setStepForms(temp);
@@ -27,7 +26,6 @@ const Stepper = ({ steps }) => {
     }
 
     const onPrevClick=()=>{
-        debugger
           let temp=JSON.parse(JSON.stringify(stepForms));
           temp[currentStep-1].completed=false;
           setStepForms(temp);

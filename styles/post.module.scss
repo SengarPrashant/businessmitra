@@ -1,0 +1,39 @@
+@import "./media.scss";
+.blogContainer{
+    width: 80%;
+    max-width: calc(100vw - 50px);
+    margin: auto;
+    @include md {
+        width: 95%;
+    }
+    @include sm {
+        width: 100%;
+    }
+    p{
+        letter-spacing: 1.5px;
+        line-height: 45px;
+    }
+}
+.blogImg{
+    width: 100%;
+}
+.blogcard{
+    position: relative;
+}
+.blogOverLay{
+    position: absolute;
+    padding: 20px;
+    color: white;
+    cursor: pointer;
+}
+.cardImg:hover .blogImgList{
+    filter: brightness(0.7);
+}
+
+.blogImgList{
+    width: 100%;
+    cursor: pointer;
+    filter: brightness(0.4);
+    transition: 0.5s;
+}
+

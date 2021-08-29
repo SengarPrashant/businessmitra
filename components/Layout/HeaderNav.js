@@ -35,10 +35,34 @@ const HeaderNav = () => {
                         <Link href={'/PartnershipFirmRegistration' + (config.city ? '/' + config.city : '')} passHref>
                             <NavDropdown.Item >Partnership Firm Registration</NavDropdown.Item>
                         </Link>
+                        <NavDropdown.Divider />
                         <Link href={'/LlpRegistration' + (config.city ? '/' + config.city : '')} passHref>
                             <NavDropdown.Item >LLP Registration</NavDropdown.Item>
                         </Link>
-                        <NavDropdown.Item href="#action/3.1">LLP Registration</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <Link href={'/PvtLtdRegistration' + (config.city ? '/' + config.city : '')} passHref>
+                            <NavDropdown.Item >Pvt Ltd Registration</NavDropdown.Item>
+                        </Link>
+                        <NavDropdown.Divider />
+                        <Link href={'/LtdFirmRegistration' + (config.city ? '/' + config.city : '')} passHref>
+                            <NavDropdown.Item >Ltd Firm Registration</NavDropdown.Item>
+                        </Link>
+                        <NavDropdown.Divider />
+                        <Link href={'/OPCFirmRegistration' + (config.city ? '/' + config.city : '')} passHref>
+                            <NavDropdown.Item >One Person Firm Registration</NavDropdown.Item>
+                        </Link>
+                        <NavDropdown.Divider />
+                        <Link href={'/Section8FirmRegistration' + (config.city ? '/' + config.city : '')} passHref>
+                            <NavDropdown.Item >Section 8 Company Registration</NavDropdown.Item>
+                        </Link>
+                        <NavDropdown.Divider />
+                        <Link href={'/ImportExportCode' + (config.city ? '/' + config.city : '')} passHref>
+                            <NavDropdown.Item >Import Export Code (IEC)</NavDropdown.Item>
+                        </Link>
+                        <NavDropdown.Divider />
+                        <Link href={'/Psara-License' + (config.city ? '/' + config.city : '')} passHref>
+                            <NavDropdown.Item >PSARA License</NavDropdown.Item>
+                        </Link>
                         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                         {/* <NavDropdown.Divider /> */}
                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
@@ -55,7 +79,7 @@ const HeaderNav = () => {
                         {/* <NavDropdown.Divider /> */}
                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                     </NavDropdown>
-                    <NavDropdown renderMenuOnMount={true}  title="Intellectual Property" id="collasible-nav-dropdown">
+                    <NavDropdown renderMenuOnMount={true} title="Intellectual Property" id="collasible-nav-dropdown">
                         <Link href={'/PartnershipFirmRegistration' + (config.city ? '/' + config.city : '')} passHref>
                             <NavDropdown.Item >Partnership Firm Registration</NavDropdown.Item>
                         </Link>
@@ -93,9 +117,14 @@ const HeaderNav = () => {
                     </NavDropdown>
                     <Nav.Link href="#features">Features</Nav.Link>
                     <Nav.Link href="#pricing">Pricing</Nav.Link>
+                    <Link href={'/post'} passHref>
+                        <Nav.Link eventKey={2} href="#">
+                            Blogs
+                        </Nav.Link>
+                    </Link>
 
                 </Nav>
-                
+
                 <Nav>
                     <Nav.Link href="#deets">More deets</Nav.Link>
                     <Link href='/login' passHref>

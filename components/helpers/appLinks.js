@@ -1,7 +1,7 @@
 export const AppLinks=[
     {text:'LLP Registration',li:'LlpRegistration'},
     {text:'One person Company Registration',li:'OnePersonCompanyRegistration'},
-    {text:'Pvt Ltd Company Registration',li:'PvtLtdCompanyRegistration'},
+    {text:'Pvt Ltd Company Registration',li:'PvtLtdRegistration'},
     {text:'Ltd Company Registration',li:'LtdCompanyRegistration'},
     {text:'Partnership Firm Registration',li:'PartnershipFirmRegistration'},
     {text:'EPF Registration',li:'EPFRegistration'},

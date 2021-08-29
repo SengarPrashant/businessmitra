@@ -21,6 +21,10 @@ body{
   width: 16px;
   height: 16px;
 }
+.icon32{
+  width: 32px;
+  height: 32px;
+}
 .card {
     box-shadow: 0px 0px 2px 1px rgb(0 0 0 / 10%);
   }
@@ -95,11 +99,14 @@ html {
   display: block;
 }
 
-.tooltip-inner{
-
+.bg-light-custom{
+  background-color: #bcbcbc38;
 }
-.tooltip-end .tooltip-arrow::before{
-  
+
+.spaceBetFlex{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
 }
 
 @import "../node_modules/bootstrap/scss/bootstrap";

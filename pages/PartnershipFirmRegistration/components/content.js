@@ -1,29 +1,17 @@
 import ServicePlan from '../../../components/ServicePlan/servicePlan';
 import SummaryPlan from '../../../components/ServicePlan/summary';
 import { Accordion, Button, Table, Container, Row, Col, Image, Card, Jumbotron } from 'react-bootstrap';
-import reactStringReplace from 'react-string-replace';
-import Link from 'next/link';
-import { AppLinks } from '../../../components/helpers/appLinks';
 import { NextSeo } from 'next-seo';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import RelatedLink from '../../../components/RelatedLinks/relatedLinks';
+import {commonData} from "../../../components/constants";
 
 const Content = ({ data, query, location }) => {
-    debugger
     const config = useSelector(state => state.config);
     //https://www.youtube.com/watch?v=t0wZYzx0qdY
-    const content = data ? (data.content.isSuccess ? data.content : undefined) : undefined;
-    const city = (location && location.isSuccess && location.data.length > 0) ? location.data : [
-        { subDistrictName: 'Delhi', districtName: 'Haryana', stateName: 'Punjab' }
-    ];
-    var text = 'We also provide the services for LLP Registration, One person Company Registration, Pvt Ltd Company Registration, Ltd Company Registration, EPF Registration, ESI Registration, Trademark Registration, Trademark Renewal, Trademark Objection reply, Trademark Rectification, Trademark opposition, Trademark counter Statement, Trademark Cancellation, Trademark-NOC, Trademark security Services, Trademark Hearing Services, Copyright Registration, Design Registration, Fssai Registration, Fssai License, Import Export code, Trust Registration, Udyam Registration, Psra License, ITR Filing, GST Registration, GST Filing, TDS Filing, ROC filing and Legal services in @City-A, @City-B and @City-C.';
-    text = text.replace('@City-A', city[0].subDistrictName);
-    text = text.replace('@City-B', city[0].districtName);
-    text = text.replace('@City-C', city[0].stateName);
-    AppLinks.map(li => {
-        text = reactStringReplace(text, li.text, (match, i) => {
-            return <Link key={i} href={`/${li.li}${(config.city ? '/' + config.city : '')}`}><a className='text-info'>{match}</a></Link>
-        })
-    })
+    const content = data ? (data.content.isSuccess ? data.content.data.info : undefined) : undefined;
+    const relatedLinks = data ? (data.content.isSuccess ? data.content.data.pageLinks : undefined) : undefined;
+    const city = (location && location.isSuccess && location.data.length > 0) ? location.data : commonData.location;
 
     return (
         <>
@@ -35,11 +23,7 @@ const Content = ({ data, query, location }) => {
                     content: `Best Chartered Accountant in ${city[0].subDistrictName}, Company Lawyer in ${city[0].subDistrictName}, Partnership firm registration online in ${city[0].subDistrictName}, Partnership Firm Registration Fee in ${city[0].subDistrictName}`
                 }]}
             />
-            {/* <div>
-                <Card.Title>
-                    <h2>Partnership Firm Registration</h2>
-                </Card.Title>
-            </div> */}
+          
             <Jumbotron className='bg-transparent shadow-sm border p-4 mt-3'>
                 <Row>
                     <Col sm={3} lg={3} xl={3} md={12}>
@@ -47,27 +31,20 @@ const Content = ({ data, query, location }) => {
                     </Col>
                     <Col sm={9} md={12} lg={9} xl={9}>
                         <Card.Title>
-                            {content && content.data &&
+                            {content &&
                                 <h2>
-                                    {content.data.filter(x => x.infoCode == 'title')[0].value.replace('@City-A', city[0].subDistrictName)}
+                                    {content.filter(x => x.infoCode == 'title')[0].value.replace('@City-A', city[0].subDistrictName)}
                                 </h2>}
                         </Card.Title>
-                        {content && content.data && <p className='text-justify'>
-                            {content.data.filter(x => x.infoCode == 'desc')[0].value.replace('@City-A', city[0].subDistrictName)}
+                        {content && <p className='text-justify'>
+                            {content.filter(x => x.infoCode == 'desc')[0].value.replace('@City-A', city[0].subDistrictName)}
                         </p>}
-                        {content && content.data && <p className='text-justify'>
-                            {content.data.filter(x => x.infoCode == 'desc1')[0].value.split('@City-A').join(city[0].subDistrictName)}
+                        {content && <p className='text-justify'>
+                            {content.filter(x => x.infoCode == 'desc1')[0].value.split('@City-A').join(city[0].subDistrictName)}
                         </p>}
-                        {content && content.data && <p className='text-justify'>
-                            {content.data.filter(x => x.infoCode == 'readmore')[0].value.split('@City-A').join(city[0].subDistrictName)}
+                        {content && <p className='text-justify'>
+                            {content.filter(x => x.infoCode == 'readmore')[0].value.split('@City-A').join(city[0].subDistrictName)}
                         </p>}
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={12}>
-                        <div className='text-justify mt-3'>
-                            {text}
-                        </div>
                     </Col>
                 </Row>
             </Jumbotron>
@@ -165,35 +142,9 @@ const Content = ({ data, query, location }) => {
                             </Col>
                         </Row>
                     </Col>
-                    <Col sm={12} md={12} lg={3} xl={3}>
-                        <Table bordered responsive>
-                            <th>
-                                <tr>Related Links</tr>
-                            </th>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <Link href={`/LlpRegistration`}><a className='text-info'>LLP Registration</a></Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <Link href={`/LlpRegistration`}><a className='text-info'>LLP Registration</a></Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <Link href={`/LlpRegistration`}><a className='text-info'>LLP Registration</a></Link>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <Link href={`/LlpRegistration`}><a className='text-info'>LLP Registration</a></Link>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                    </Col>
+                    {relatedLinks && <Col sm={12} md={12} lg={3} xl={3}>
+                       <RelatedLink data={relatedLinks} />
+                    </Col>}
                 </Row>
             </div>
             <Row>

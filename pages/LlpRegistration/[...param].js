@@ -16,8 +16,6 @@ export async function getServerSideProps(context) {
     let _location;
     if(context.query.param){
         let params=context.query.param;
-        console.log(params);
-        debugger
         _location = await getLocationList(params[params.length-1], 0, 10, true);
     }
     return {

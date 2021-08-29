@@ -4,8 +4,6 @@ import Content from './components/content';
 import { getPageData, getPageInfo, getLocationList } from '../api/Pages';
 
 const Params = (props) => {
-    //https://www.youtube.com/watch?v=t0wZYzx0qdY
-    //const router=useRouter();
     return (
         <>
             <Content data={props.data} query={props.query} location={props.location} />
@@ -14,8 +12,8 @@ const Params = (props) => {
 }
 
 export async function getServerSideProps(context) {
-    const resPlans = await getPageData('PartnershipFirm');
-    const resData = await getPageInfo('PartnershipFirm');
+    const resPlans = await getPageData('PSARA');
+    const resData = await getPageInfo('PSARA');
     let _location;
     if(context.query.param){
         let params=context.query.param;

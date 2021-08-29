@@ -18,6 +18,7 @@ const ServicePlan = ({ data }) => {
                                     <div>
                                         <Card.Title>{plan.name}</Card.Title>
                                         <Card.Title className="text-danger">{`${plan.type} (${plan.price} ${plan.currency})`}</Card.Title>
+                                        <Card.Title>{plan.caption}</Card.Title>
                                     </div>
                                     <Card.Text>
                                         {

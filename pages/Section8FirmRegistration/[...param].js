@@ -14,8 +14,8 @@ const Params = (props) => {
 }
 
 export async function getServerSideProps(context) {
-    const resPlans = await getPageData('PartnershipFirm');
-    const resData = await getPageInfo('PartnershipFirm');
+    const resPlans = await getPageData('Sec8Firm');
+    const resData = await getPageInfo('Sec8Firm');
     let _location;
     if(context.query.param){
         let params=context.query.param;

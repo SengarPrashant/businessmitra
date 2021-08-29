@@ -4,6 +4,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    letter-spacing: 1.5px;
+    line-height: 35px;
 }
 
 a {
@@ -51,4 +53,16 @@ a {
 
 .rtFloat{
   float: right;
+}
+.hover{
+  cursor: pointer;
+}
+.skiptranslate {
+  visibility:hidden;
+}
+.skiptranslate > * {
+  visibility:visible;
+}
+.goog-logo-link{
+  display: none;
 }

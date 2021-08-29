@@ -69,8 +69,6 @@ export async function getLocationList(searchText=null, startRow=0, pageSize=100,
      }
    }
    catch (err) {
-      debugger
-      console.log(err)
       res.isSuccess=false;
       res.status=-1;
       res.data='Application error'
