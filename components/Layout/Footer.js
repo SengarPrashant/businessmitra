@@ -5,17 +5,7 @@ import Link from 'next/link';
 
 const Footer = () => {
     //https://www.youtube.com/watch?v=t0wZYzx0qdY
-    const googleTranslateElementInit = () => {
-        new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
-       }
-       
-      React.useEffect(() => {
-         var addScript = document.createElement('script');
-         addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
-         document.body.appendChild(addScript);
-         window.googleTranslateElementInit = googleTranslateElementInit;
-       }, [])
-     
+    
     return (
         <>
             <footer className={styles.footer}>

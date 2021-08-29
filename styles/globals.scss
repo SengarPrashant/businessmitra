@@ -57,6 +57,10 @@ a {
 .hover{
   cursor: pointer;
 }
+.flex{
+  display: flex;
+  align-items: center;
+}
 .skiptranslate {
   visibility:hidden;
 }
@@ -65,4 +69,8 @@ a {
 }
 .goog-logo-link{
   display: none;
+}
+.goog-te-combo{
+  padding: 4px;
+  border-radius: 5px;
 }

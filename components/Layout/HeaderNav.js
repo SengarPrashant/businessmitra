@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { useRouter, Router } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { addCity, removeCity } from '../../redux/actions/configActions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { translateInit, googleTranslateElementInit, setCookie } from "../helpers/googleTrans";
 
 //https://www.youtube.com/watch?v=a1T5UvQpEDs
 
@@ -21,7 +22,9 @@ const HeaderNav = () => {
                 dispach(addCity(router.query.param))
             }
         }
+        translateInit();
     }, []);
+
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="primary" sticky='top' variant="dark" className='p-3' >
@@ -126,7 +129,7 @@ const HeaderNav = () => {
                 </Nav>
 
                 <Nav>
-                    <Nav.Link href="#deets">More deets</Nav.Link>
+                    <div id="google_translate_element" className='text-right flex'></div>
                     <Link href='/login' passHref>
                         <Nav.Link eventKey={2} href="#memes">
                             <div className='centerFlex' >

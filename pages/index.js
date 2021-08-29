@@ -4,7 +4,7 @@ import Stepper from '../components/StepForm/Stepper';
 export default function Home() {
   return (
     <>
-      <Stepper />
+      {/* <Stepper /> */}
       <Content />
     </>
   )
