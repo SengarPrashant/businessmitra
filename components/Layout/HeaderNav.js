@@ -66,6 +66,10 @@ const HeaderNav = () => {
                         <Link href={'/Psara-License' + (config.city ? '/' + config.city : '')} passHref>
                             <NavDropdown.Item >PSARA License</NavDropdown.Item>
                         </Link>
+                        <NavDropdown.Divider />
+                        <Link href={'/EPF-Registration' + (config.city ? '/' + config.city : '')} passHref>
+                            <NavDropdown.Item >EPF Registration</NavDropdown.Item>
+                        </Link>
                         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                         {/* <NavDropdown.Divider /> */}
                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
