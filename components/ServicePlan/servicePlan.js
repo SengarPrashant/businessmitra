@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { useRouter } from 'next/router';
 import { Card, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +8,13 @@ import { faQuestionCircle, faQuestion } from '@fortawesome/free-solid-svg-icons'
 const ServicePlan = ({ data }) => {
     const plans = data.isSuccess ? data.data.planTypeList : undefined;
     const services = data.isSuccess ? data.data.serviceList : undefined;
+    const router = useRouter();
+    const onApplynow = () => {
+        router.push({
+            pathname: '/applyNow/[slug]',
+            query: { ...router.query, slug: data.data.code, name: data.data.name },
+        });
+    }
     return (
         <Fragment>
             <Row>
@@ -44,7 +52,8 @@ const ServicePlan = ({ data }) => {
                                     </Card.Text>
                                 </Card.Body>
                                 <Card.Footer className="text-muted">
-                                    <Button variant="primary">Apply Now</Button>
+                                    <Button variant="primary"
+                                        onClick={onApplynow} >Apply Now</Button>
                                 </Card.Footer>
                             </Card>
                         </Col>
