@@ -5,11 +5,12 @@ import { useSelector } from "react-redux";
 
 const ApplyNowSlug = ({ code, name }) => {
     const [basicDetail, setBasicDetail] = useState({ Name: '', Email: '', Mobile: '', GSTIN: '', BusiessName: '', State: '', Country: '' });
-    const [basicDetailError, setBasicDetailError] = useState({ Name: '', Email: '', Mobile: '' });
+    const [basicDetailError, setBasicDetailError] = useState({ Name: '', Email: '', Mobile: '',t:{} });
     const [paymentDetail, setPaymentDetail] = useState({});
     const selectedPlan = useSelector(state => state.plan);
-    debugger
+    
     const onsubmit = (frm) => {
+        basicDetailError.t={Name: true, Email: true, Mobile: true}
         const result = validateBasicDetail(basicDetail, basicDetailError);
         if (!result.isvalid) {
             setBasicDetailError(result.err);
@@ -24,8 +25,11 @@ const ApplyNowSlug = ({ code, name }) => {
         const { name, value } = evt.target;
         let detail = { ...basicDetail };
         detail[name] = value;
-        const res = validateBasicDetail(detail, basicDetailError);
-        setBasicDetailError(res.err);
+        if(name in basicDetailError){
+            basicDetailError.t[name]=true;
+            const res = validateBasicDetail(detail, basicDetailError);
+            setBasicDetailError(res.err);
+        }
         setBasicDetail({ ...detail });
     }
     const onCountryChange = () => {
@@ -67,18 +71,18 @@ const ApplyNowSlug = ({ code, name }) => {
                     <Form>
                         <Form.Group controlId="form.Name">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control type="text" isInvalid={basicDetailError.Name} name='Name' placeholder="Enter name" onChange={onchange} />
-                            {basicDetailError.Name && <FormText className='text-danger'>{basicDetailError.Name}</FormText>}
+                            <Form.Control type="text" isInvalid={basicDetailError.Name  && basicDetailError.t.Name} name='Name' placeholder="Enter name" onChange={onchange} />
+                            {(basicDetailError.Name && basicDetailError.t.Name) && <FormText className='text-danger'>{basicDetailError.Name}</FormText>}
                         </Form.Group>
                         <Form.Group controlId="form.Email">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" name='Email' isInvalid={basicDetailError.Email} placeholder="name@example.com" onChange={onchange} />
-                            {basicDetailError.Email && <FormText className='text-danger'>{basicDetailError.Email}</FormText>}
+                            <Form.Control type="email" name='Email' isInvalid={basicDetailError.Email && basicDetailError.t.Email} placeholder="name@example.com" onChange={onchange} />
+                            {(basicDetailError.Email && basicDetailError.t.Email) && <FormText className='text-danger'>{basicDetailError.Email}</FormText>}
                         </Form.Group>
                         <Form.Group controlId="form.Mobile">
                             <Form.Label>Mobile</Form.Label>
-                            <Form.Control type="text" name='Mobile' isInvalid={basicDetailError.Mobile} placeholder="" onChange={onchange} />
-                            {basicDetailError.Mobile && <FormText maxLength={10} className='text-danger'>{basicDetailError.Mobile}</FormText>}
+                            <Form.Control type="text" name='Mobile' isInvalid={basicDetailError.Mobile && basicDetailError.t.Mobile} placeholder="" onChange={onchange} />
+                            {(basicDetailError.Mobile && basicDetailError.t.Mobile) && <FormText maxLength={10} className='text-danger'>{basicDetailError.Mobile}</FormText>}
                         </Form.Group>
                         <Form.Group controlId="form.GSTIN">
                             <Form.Label>GSTIN</Form.Label>
