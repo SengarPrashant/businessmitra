@@ -104,7 +104,7 @@ const ApplyNowSlug = ({ code, name }) => {
                             <Form.Label>State</Form.Label>
                             <Form.Control as="select" name='State' onChange={onchange}>
                                 <option value="">-Select-</option>
-                                {state.map(item => {
+                                {state.filter(s=>s.countryCode=basicDetail.Country).map(item => {
                                     return <option key={item.code} value={item.code}>{item.name}</option>;
                                 })}
                             </Form.Control>
