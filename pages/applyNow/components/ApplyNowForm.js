@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Card, Button, Form, FormText, Row, Col } from 'react-bootstrap';
+import { Card, Button, Form, FormText, Row, Col } from 'react-bootstrap';
 import { country, state } from "../../../components/commonData/CountryStateData";
 import { useSelector } from "react-redux";
+import Loader from '../../../components/Layout/Loader';
 
 const ApplyNowSlug = ({ code, name }) => {
     const [basicDetail, setBasicDetail] = useState({ Name: '', Email: '', Mobile: '', GSTIN: '', BusiessName: '', State: '', Country: '' });
-    const [basicDetailError, setBasicDetailError] = useState({ Name: '', Email: '', Mobile: '',t:{} });
-    const [paymentDetail, setPaymentDetail] = useState({});
+    const [basicDetailError, setBasicDetailError] = useState({ Name: '', Email: '', Mobile: '', t: {} });
     const selectedPlan = useSelector(state => state.plan);
-    
+    const [loading, setLoading] = useState(false);
+
     const onsubmit = (frm) => {
-        basicDetailError.t={Name: true, Email: true, Mobile: true}
+        basicDetailError.t = { Name: true, Email: true, Mobile: true }
         const result = validateBasicDetail(basicDetail, basicDetailError);
         if (!result.isvalid) {
             setBasicDetailError(result.err);
             return false;
         }
         else {
+            setLoading(true);
             alert(JSON.stringify(basicDetail));
         }
     }
@@ -25,16 +27,14 @@ const ApplyNowSlug = ({ code, name }) => {
         const { name, value } = evt.target;
         let detail = { ...basicDetail };
         detail[name] = value;
-        if(name in basicDetailError){
-            basicDetailError.t[name]=true;
+        if (name in basicDetailError) {
+            basicDetailError.t[name] = true;
             const res = validateBasicDetail(detail, basicDetailError);
             setBasicDetailError(res.err);
         }
         setBasicDetail({ ...detail });
     }
-    const onCountryChange = () => {
 
-    }
     const validateBasicDetail = (_data, _errObj) => {
         const regMobile = /^[0-9\-\+]{10,15}$/;
         const regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -51,7 +51,7 @@ const ApplyNowSlug = ({ code, name }) => {
             err.Mobile = regMobile.test(data.Mobile) ? '' : 'Invalid mobile.';
         }
         Object.keys(err).map(key => {
-            if (err[key]) {
+            if (err[key] && key !=='t') {
                 valid = false;
             }
         })
@@ -60,10 +60,22 @@ const ApplyNowSlug = ({ code, name }) => {
     //className='d-md-none d-xs-none d-sm-none d-lg-block d-xl-block'
     return (
         <>
+            <Loader show={loading} onClose={()=>{setLoading(false)}} />
             <Row>
                 <Col sm={12} md={12} lg={6} >
-                    <Card className='positionUnset' style={{height:'100%'}} >
-                        <Card.Body>order summary</Card.Body>
+                    <Card className='positionUnset' style={{ height: '100%' }} >
+                        <Card.Body>
+                            {selectedPlan.selected &&
+                                <Row>
+                                    <Col sm={12}><h2>Baijoo logo</h2></Col>
+                                    <Col sm={12}><h1>Order summary</h1></Col>
+                                    <Col sm={12}><h2>Service : {name}</h2></Col>
+                                    <Col sm={12}><h2>Plan : {`${selectedPlan.planData.plan.name} (${selectedPlan.planData.plan.type})`}</h2></Col>
+                                    <Col sm={12}><h4> {selectedPlan.planData.plan.caption}</h4> </Col>
+                                    <Col sm={12}><h1>Order Total : {`${parseFloat(selectedPlan.planData.plan.price).toFixed(2)} ${selectedPlan.planData.plan.currency}`}</h1></Col>
+                                </Row>
+                            }
+                        </Card.Body>
                     </Card>
                 </Col>
                 <Col sm={12} md={12} lg={6}>
@@ -71,7 +83,7 @@ const ApplyNowSlug = ({ code, name }) => {
                     <Form>
                         <Form.Group controlId="form.Name">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control type="text" isInvalid={basicDetailError.Name  && basicDetailError.t.Name} name='Name' placeholder="Enter name" onChange={onchange} />
+                            <Form.Control type="text" isInvalid={basicDetailError.Name && basicDetailError.t.Name} name='Name' placeholder="Enter name" onChange={onchange} />
                             {(basicDetailError.Name && basicDetailError.t.Name) && <FormText className='text-danger'>{basicDetailError.Name}</FormText>}
                         </Form.Group>
                         <Form.Group controlId="form.Email">
@@ -108,7 +120,7 @@ const ApplyNowSlug = ({ code, name }) => {
                             <Form.Label>State</Form.Label>
                             <Form.Control as="select" name='State' onChange={onchange}>
                                 <option value="">-Select-</option>
-                                {state.filter(s=>s.countryCode=basicDetail.Country).map(item => {
+                                {state.filter(s => s.countryCode = basicDetail.Country).map(item => {
                                     return <option key={item.code} value={item.code}>{item.name}</option>;
                                 })}
                             </Form.Control>
@@ -116,7 +128,7 @@ const ApplyNowSlug = ({ code, name }) => {
                         </Form.Group>
                         <Button variant="primary" type="button" onClick={onsubmit}>
                             Submit
-                    </Button>
+                        </Button>
                     </Form>
                 </Col>
             </Row>
