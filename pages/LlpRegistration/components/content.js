@@ -1,7 +1,6 @@
 import ServicePlan from '../../../components/ServicePlan/servicePlan';
 import SummaryPlan from '../../../components/ServicePlan/summary';
 import { Accordion, Button, Table, Container, Row, Col, Image, Card, Jumbotron } from 'react-bootstrap';
-import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 import { useSelector, useDispatch } from 'react-redux';
 import RelatedLink from '../../../components/RelatedLinks/relatedLinks';

@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { addCity, removeCity } from '../../redux/actions/configActions';
 import { translateInit, googleTranslateElementInit, setCookie } from "../helpers/googleTrans";
+import AppLogo from './AppLogo';
 
 //https://www.youtube.com/watch?v=a1T5UvQpEDs
 
@@ -29,7 +30,9 @@ const HeaderNav = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="primary" sticky='top' variant="dark" className='p-3' >
             <Link href="/" passHref>
-                <Navbar.Brand onClick={(event) => { dispach(removeCity()) }} className={'businesslogo'}>React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand onClick={(event) => { dispach(removeCity()) }} className={'businesslogo'}>
+                    <AppLogo />
+                </Navbar.Brand>
             </Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
