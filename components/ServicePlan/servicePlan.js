@@ -1,15 +1,19 @@
 import React, { Fragment } from 'react';
 import { useRouter } from 'next/router';
 import { Card, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuestionCircle, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import {  faQuestion } from '@fortawesome/free-solid-svg-icons';
+import {useDispatch} from "react-redux";
+import {selectPlan} from '../../redux/actions/planActions';
 
 const ServicePlan = ({ data }) => {
+    const dispatch = useDispatch();
     const plans = data.isSuccess ? data.data.planTypeList : undefined;
     const services = data.isSuccess ? data.data.serviceList : undefined;
     const router = useRouter();
-    const onApplynow = () => {
+    const onApplynow = (_plan, _Service) => {
+        dispatch(selectPlan({plan:_plan,service:_Service}));
         router.push({
             pathname: '/applyNow/[slug]',
             query: { ...router.query, slug: data.data.code, name: data.data.name },
@@ -53,7 +57,7 @@ const ServicePlan = ({ data }) => {
                                 </Card.Body>
                                 <Card.Footer className="text-muted">
                                     <Button variant="primary"
-                                        onClick={onApplynow} >Apply Now</Button>
+                                        onClick={()=>{onApplynow(plan,services)}} >Apply Now</Button>
                                 </Card.Footer>
                             </Card>
                         </Col>
