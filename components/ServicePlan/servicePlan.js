@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Card, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import {useDispatch} from "react-redux";
 import {selectPlan} from '../../redux/actions/planActions';
 

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Form, FormText, Row, Col } from 'react-bootstrap';
+import { Button, Form, FormText, Row, Col } from 'react-bootstrap';
 import { country, state } from "../../../components/commonData/CountryStateData";
 import { useSelector } from "react-redux";
 import Loader from '../../../components/Layout/Loader';
-import AppLogo from '../../../components/Layout/AppLogo';
+import OrderSummary from "./OrderSummary";
+import { saveCustomer } from "../../api/Pages";
 
 const ApplyNowSlug = ({ code, name }) => {
-    const [basicDetail, setBasicDetail] = useState({ Name: '', Email: '', Mobile: '', GSTIN: '', BusiessName: '', State: '', Country: '' });
+    const [basicDetail, setBasicDetail] = useState({ Name: '', Email: '', Mobile: '', GSTIN: '', BusinessName: '', State: '', Country: '' });
     const [basicDetailError, setBasicDetailError] = useState({ Name: '', Email: '', Mobile: '', t: {} });
     const selectedPlan = useSelector(state => state.plan);
     const [loading, setLoading] = useState(false);
@@ -20,7 +21,15 @@ const ApplyNowSlug = ({ code, name }) => {
         }
         else {
             setLoading(true);
-            alert(JSON.stringify(basicDetail));
+            saveCustomer(basicDetail).then(res=>{
+                console.log(res);
+                setLoading(false);
+            }).catch(err=>{
+                console.log(err);
+                setLoading(false);
+            });
+
+            //alert(JSON.stringify(basicDetail));
         }
     }
 
@@ -62,36 +71,9 @@ const ApplyNowSlug = ({ code, name }) => {
     return (
         <>
             <Loader show={loading} onClose={() => { setLoading(false) }} />
-            <Row>
+            <Row className="mt-3 mb-3">
                 <Col sm={12} md={12} lg={6} >
-                    <Card className='positionUnset' style={{ height: '100%' }} >
-                        <Card.Body className='p-5 bg-light'>
-                            {selectedPlan.selected &&
-                                <Row>
-                                    <Col sm={12}>
-                                        <div style={{ textAlign: "center" }}>
-                                            <AppLogo size={35} />
-                                            <div className="border-bottom pb-2">Baijoo provides all your fianacial services.</div>
-                                        </div>
-                                    </Col>
-                                    <Col sm={12}><div style={{ fontSize: 32 }} className='font-weight-bold text-center mt-4 mb-4'>Order summary</div></Col>
-                                    <Col sm={12}>
-                                        <div style={{ fontSize: 32 }} className='font-weight-bold text-center mt-4 mb-4'>
-                                            Service: {name}</div>
-                                        <div style={{ fontSize: 32 }} className='font-weight-bold text-center mt-4'>
-                                            Plan: {`${selectedPlan.planData.plan.name} (${selectedPlan.planData.plan.type})`}
-                                        </div>
-                                        <div className='font-weight-bold text-center pb-4 border-bottom'>{selectedPlan.planData.plan.caption}</div>
-                                        <div style={{ fontSize: 32, height:150 }} 
-                                        className='flex justify-content-center bg-light-custom font-weight-bold text-center mt-4 mb-4'>
-                                            Order Total: {`${parseFloat(selectedPlan.planData.plan.price).toFixed(2)} 
-                                            ${selectedPlan.planData.plan.currency}`}
-                                        </div>
-                                    </Col>
-                                </Row>
-                            }
-                        </Card.Body>
-                    </Card>
+                    <OrderSummary selectedPlan={selectedPlan} planPage={name} />
                 </Col>
                 <Col sm={12} md={12} lg={6}>
                     <h1>{name.includes('register') ? `${name} form` : `${name} registration form`}</h1>
@@ -116,10 +98,10 @@ const ApplyNowSlug = ({ code, name }) => {
                             <Form.Control type="text" name='GSTIN' isInvalid={basicDetailError.GSTIN} placeholder="" onChange={onchange} />
                             {basicDetailError.GSTIN && <FormText className='text-danger'>{basicDetailError.GSTIN}</FormText>}
                         </Form.Group>
-                        <Form.Group controlId="form.BusiessName">
+                        <Form.Group controlId="form.BusinessName">
                             <Form.Label>Busiess Name</Form.Label>
-                            <Form.Control type="text" name='BusiessName' isInvalid={basicDetailError.BusiessName} placeholder="" onChange={onchange} />
-                            {basicDetailError.BusiessName && <FormText className='text-danger'>{basicDetailError.BusiessName}</FormText>}
+                            <Form.Control type="text" name='BusinessName' isInvalid={basicDetailError.BusinessName} placeholder="" onChange={onchange} />
+                            {basicDetailError.BusinessName && <FormText className='text-danger'>{basicDetailError.BusinessName}</FormText>}
                         </Form.Group>
                         <Form.Group controlId="form.Country">
                             <Form.Label>Country</Form.Label>
@@ -147,7 +129,6 @@ const ApplyNowSlug = ({ code, name }) => {
                     </Form>
                 </Col>
             </Row>
-
         </>
     )
 }

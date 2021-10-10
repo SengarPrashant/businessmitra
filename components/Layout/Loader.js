@@ -3,7 +3,7 @@ import { Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faTimes} from '@fortawesome/free-solid-svg-icons';
 
-const Loader = ({ show = false, onClose}) => {
+const Loader = ({ show = false, message='Loading...', onClose}) => {
     if (show === false) {
         return null
     }
@@ -14,7 +14,7 @@ const Loader = ({ show = false, onClose}) => {
                 <div>
                     <Spinner animation="border" />
                 </div>
-                <div>Loading...</div>
+                <div>{message}</div>
             </div>
         </div>
     )
