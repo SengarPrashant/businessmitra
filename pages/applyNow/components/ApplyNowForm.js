@@ -3,6 +3,7 @@ import { Card, Button, Form, FormText, Row, Col } from 'react-bootstrap';
 import { country, state } from "../../../components/commonData/CountryStateData";
 import { useSelector } from "react-redux";
 import Loader from '../../../components/Layout/Loader';
+import AppLogo from '../../../components/Layout/AppLogo';
 
 const ApplyNowSlug = ({ code, name }) => {
     const [basicDetail, setBasicDetail] = useState({ Name: '', Email: '', Mobile: '', GSTIN: '', BusiessName: '', State: '', Country: '' });
@@ -51,7 +52,7 @@ const ApplyNowSlug = ({ code, name }) => {
             err.Mobile = regMobile.test(data.Mobile) ? '' : 'Invalid mobile.';
         }
         Object.keys(err).map(key => {
-            if (err[key] && key !=='t') {
+            if (err[key] && key !== 't') {
                 valid = false;
             }
         })
@@ -60,19 +61,33 @@ const ApplyNowSlug = ({ code, name }) => {
     //className='d-md-none d-xs-none d-sm-none d-lg-block d-xl-block'
     return (
         <>
-            <Loader show={loading} onClose={()=>{setLoading(false)}} />
+            <Loader show={loading} onClose={() => { setLoading(false) }} />
             <Row>
                 <Col sm={12} md={12} lg={6} >
                     <Card className='positionUnset' style={{ height: '100%' }} >
-                        <Card.Body>
+                        <Card.Body className='p-5 bg-light'>
                             {selectedPlan.selected &&
                                 <Row>
-                                    <Col sm={12}><h2>Baijoo logo</h2></Col>
-                                    <Col sm={12}><h1>Order summary</h1></Col>
-                                    <Col sm={12}><h2>Service : {name}</h2></Col>
-                                    <Col sm={12}><h2>Plan : {`${selectedPlan.planData.plan.name} (${selectedPlan.planData.plan.type})`}</h2></Col>
-                                    <Col sm={12}><h4> {selectedPlan.planData.plan.caption}</h4> </Col>
-                                    <Col sm={12}><h1>Order Total : {`${parseFloat(selectedPlan.planData.plan.price).toFixed(2)} ${selectedPlan.planData.plan.currency}`}</h1></Col>
+                                    <Col sm={12}>
+                                        <div style={{ textAlign: "center" }}>
+                                            <AppLogo size={35} />
+                                            <div className="border-bottom pb-2">Baijoo provides all your fianacial services.</div>
+                                        </div>
+                                    </Col>
+                                    <Col sm={12}><div style={{ fontSize: 32 }} className='font-weight-bold text-center mt-4 mb-4'>Order summary</div></Col>
+                                    <Col sm={12}>
+                                        <div style={{ fontSize: 32 }} className='font-weight-bold text-center mt-4 mb-4'>
+                                            Service: {name}</div>
+                                        <div style={{ fontSize: 32 }} className='font-weight-bold text-center mt-4'>
+                                            Plan: {`${selectedPlan.planData.plan.name} (${selectedPlan.planData.plan.type})`}
+                                        </div>
+                                        <div className='font-weight-bold text-center pb-4 border-bottom'>{selectedPlan.planData.plan.caption}</div>
+                                        <div style={{ fontSize: 32, height:150 }} 
+                                        className='flex justify-content-center bg-light-custom font-weight-bold text-center mt-4 mb-4'>
+                                            Order Total: {`${parseFloat(selectedPlan.planData.plan.price).toFixed(2)} 
+                                            ${selectedPlan.planData.plan.currency}`}
+                                        </div>
+                                    </Col>
                                 </Row>
                             }
                         </Card.Body>
