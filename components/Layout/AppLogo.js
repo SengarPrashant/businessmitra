@@ -2,7 +2,7 @@ import { Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  } from '@fortawesome/free-solid-svg-icons';
 
-const AppLogo = ({  }) => {
+const AppLogo = ({ varient=1, size=24 }) => {
     
     return (
         <div style={{ display: 'flex', alignItems:'center' }}>

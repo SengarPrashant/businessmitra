@@ -76,3 +76,25 @@ export async function getLocationList(searchText=null, startRow=0, pageSize=100,
    }
    return res;
 }
+
+
+export async function saveCustomer(_customerObj) {
+   let res={isSuccess:true,status:200, data:''};
+   try {
+     let result= await axios.post(`${publicRuntimeConfig.apiBaseUrl}/Common/SaveCustomer`,_customerObj);
+     res.status = await result.status;
+     if(res.status===200){
+        res.data=await result.data
+     }
+     else{
+        res.isSuccess=false;
+        res.data=await result.statusText;
+     }
+   }
+   catch (err) {
+      res.isSuccess=false;
+      res.status=-1;
+      res.data='Application error'
+   }
+   return res;
+}
