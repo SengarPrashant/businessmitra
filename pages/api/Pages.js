@@ -6,6 +6,7 @@ export async function getPageData(_code) {
     let res={isSuccess:true,status:200, data:''};
     try {
       let result= await axios.get(`${process.env.API_BASE_URL}/FirmRegistration?planCode=${_code}`);
+      console.log('@@@',result);
       res.status = await result.status;
       if(res.status===200){
          res.data=await result.data

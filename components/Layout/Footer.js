@@ -9,9 +9,63 @@ const Footer = () => {
     return (
         <>
             <footer className={styles.footer}>
+                <div className="innerContainer">
                 <Container fluid>
                 <div id="google_translate_element" className='text-right'></div>
-                    <Row>
+
+                <Row>
+                    <Col md={3}>
+                       <ul>
+                        <h3> Company</h3>
+                        <li>About Us</li>
+                        <li>Our Advisors</li>
+                        <li>Testimonial</li>
+                        <li>Case Studies</li>
+                        <li>Blog</li>
+                        <li>Contact</li>
+                        <li>Careers</li>
+                       </ul>
+                    </Col>
+
+                    <Col md={3}>
+                       <ul>
+                        <h3> Company</h3>
+                        <li>About Us</li>
+                        <li>Our Advisors</li>
+                        <li>Testimonial</li>
+                        <li>Case Studies</li>
+                        <li>Blog</li>
+                        <li>Contact</li>
+                        <li>Careers</li>
+                       </ul>
+                    </Col>
+
+                    <Col md={3}>
+                       <ul>
+                        <h3> Company</h3>
+                        <li>About Us</li>
+                        <li>Our Advisors</li>
+                        <li>Testimonial</li>
+                        <li>Case Studies</li>
+                        <li>Blog</li>
+                        <li>Contact</li>
+                        <li>Careers</li>
+                       </ul>
+                    </Col>
+                    <Col md={3}>
+                       <ul>
+                        <h3> Company</h3>
+                        <li>About Us</li>
+                        <li>Our Advisors</li>
+                        <li>Testimonial</li>
+                        <li>Case Studies</li>
+                        <li>Blog</li>
+                        <li>Contact</li>
+                        <li>Careers</li>
+                       </ul>
+                    </Col>
+                </Row>
+                    {/* <Row>
                         <Col>
                             <Row>
                                 <Col className={styles.title}>
@@ -79,16 +133,15 @@ const Footer = () => {
                             </Row>
                         </Col>
                         <Col> <Link href='/MarketArea'><a>Market Area</a></Link></Col>
-                    </Row>
+                    </Row> */}
 
                 </Container>
+                </div>
             </footer>
             <Container fluid className={styles.footerRights}>
                 <Row>
-                    <Col sm={6}>© Businessmitra - All right reserved</Col>
-                    <Col sm={6}>
-                        <span className={'rtFloat'}>© Businessmitra - All right reserved</span>
-                    </Col>
+                    <Col className="text-center" sm={12}>© Businessmitra - All right reserved <span >© Businessmitra - All right reserved</span></Col>
+                    
                 </Row>
             </Container>
         </>

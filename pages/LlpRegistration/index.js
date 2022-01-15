@@ -4,7 +4,9 @@ import { getPageData, getPageInfo } from '../api/Pages';
 const Index = (props) => {
     //https://www.youtube.com/watch?v=t0wZYzx0qdY
     return (
+        <div className="innerContainer">
         <Content data={props.data} />
+        </div>
     )
 }
 

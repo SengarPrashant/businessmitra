@@ -8,3 +8,5 @@ module.exports = {
       apiBaseUrl:process.env.API_BASE_URL
     },
   }
+  const withImages = require('next-images')
+  module.exports = withImages()

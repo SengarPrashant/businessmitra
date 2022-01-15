@@ -47,6 +47,7 @@ const Content = ({ data, query, location }) => {
                     </Col>
                 </Row>
             </Jumbotron>
+            
             <Jumbotron className='bg-transparent p-0'>
                 {data && <SummaryPlan data={data.plans} />}
             </Jumbotron>

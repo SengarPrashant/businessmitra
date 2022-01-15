@@ -3,6 +3,7 @@ import '../styles/customTheme.scss';
 import Layout from '../components/Layout/Layout';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
+import '../styles/home.scss';
 
 function MyApp({ Component, pageProps }) {
   return (

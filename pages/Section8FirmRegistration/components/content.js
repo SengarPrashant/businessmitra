@@ -15,6 +15,7 @@ const Content = ({ data, query, location }) => {
 
     return (
         <>
+        <div className="innerContainer">
             <NextSeo
                 title={`Section 8 Company Online application in ${(new Date().getFullYear())}. Section 8 Company Registration in three clicks in ${query && query.param[0] ? query.param[0] : city[0].subDistrictName}.`}
                 description={`Section 8 Company Registration online made easy and fast, Step by step guidance for Registration of Section 8 Company online in ${city[0].subDistrictName}`}
@@ -229,6 +230,7 @@ const Content = ({ data, query, location }) => {
                     </Accordion.Collapse>
                 </Accordion>
             </Jumbotron>
+            </div>
         </>
     )
 }
