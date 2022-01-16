@@ -28,7 +28,8 @@ const HeaderNav = () => {
 
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="primary" sticky='top' variant="dark" className='p-3' >
+        <div className="navigation">
+        <Navbar collapseOnSelect expand="lg" bg="white1" sticky='top1' variant="dark" className='' >
             <Link href="/" passHref>
                 <Navbar.Brand onClick={(event) => { dispach(removeCity()) }} className={'businesslogo'}>
                     <AppLogo />
@@ -152,6 +153,7 @@ const HeaderNav = () => {
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
+        </div>
     )
 
 }

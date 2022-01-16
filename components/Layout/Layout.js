@@ -15,7 +15,8 @@ const Layout = ({ children }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <HeaderNav />
-            <div style={{fontSize: '1.2rem', paddingTop: media.md || media.sm ? 10 : 15, minHeight: '90vh', width: media.md || media.sm ? "90%" : "80%", margin:'auto' }} >
+            {/* <div style={{fontSize: '1.2rem', paddingTop: media.md || media.sm ? 10 : 15, minHeight: '90vh', width: media.md || media.sm ? "90%" : "80%", margin:'auto' }} > */}
+              <div>
                 {children}
             </div>
             <Footer />

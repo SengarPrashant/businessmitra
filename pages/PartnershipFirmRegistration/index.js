@@ -4,7 +4,9 @@ import { getPageData, getPageInfo, getLocationList } from '../api/Pages';
 const index = (props) => {
     return (
         <>
+         <div className="innerContainer">
             <Content data={props.data} />
+         </div>
         </>
     )
 }

@@ -12,9 +12,10 @@ const Content = ({ data, query, location }) => {
     const content = data ? (data.content.isSuccess ? data.content.data.info : undefined) : undefined;
     const relatedLinks = data ? (data.content.isSuccess ? data.content.data.pageLinks : undefined) : undefined;
     const city = (location && location.isSuccess && location.data.length > 0) ? location.data : commonData.location;
-
+    debugger;
     return (
         <>
+         <div className="innerContainer">
             <NextSeo
                 title={`Limited company Online Registration ${(new Date().getFullYear())} by best CA and lawyers. Public Limited Company ${(new Date().getFullYear())} in ${query && query.param[0] ? query.param[0] : city[0].subDistrictName}.`}
                 description={`Ltd Company Registration online in ${(new Date().getFullYear())} Limited Company Registration online in India in ${city[0].subDistrictName}.`}
@@ -230,6 +231,7 @@ const Content = ({ data, query, location }) => {
                     </Accordion.Collapse>
                 </Accordion>
             </Jumbotron>
+            </div>
         </>
     )
 }

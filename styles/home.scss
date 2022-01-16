@@ -1,0 +1,284 @@
+@import './mediaBreakPoints.scss';
+.sliderHome{
+ .carousel-inner{
+     .imgWidth{
+       width: 100%;
+       @media (max-width: $sm) {            
+           min-height: 430px;
+        }
+        @media (min-width:$lg) {
+        } 
+     }
+ }
+    .carousel-caption{
+        top:30%;
+        bottom: none;
+        text-align: left;
+        left: 3%;
+        width: 60%;
+        @media (max-width: $sm) {            
+            top:14%;
+            width: 100%;
+         }
+         h3{
+             color:#cc8809;
+         }
+    }
+    .carousel-indicators{        
+        bottom: 10%;
+        margin-left:3%;
+        justify-content: left;
+        .active{
+            background-color: #fbbc48;
+        }
+        @media (max-width: $sm) {
+            bottom: 0%;            
+            justify-content: center;
+            margin-left: 8%;
+         }
+    }
+    .carousel-control-prev,
+    .carousel-control-next{
+        display:none
+    }
+}
+    .bannerSection{
+    position: relative;
+}
+.padding-section{
+    padding: 40px 25px;
+    top: 0;
+    background-color: rgba(255, 165, 0, 0.7);
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 24%;
+    margin: 0 auto;
+    width: 71%;
+    color: #fff;
+    border-radius: 4px;
+}
+
+/*  Service css */
+.services-section > .servicessection-bglayer{
+    background-color: #1d2435;
+}
+.services-section{
+    background-color: #e4e4e4;
+    padding: 90px 0 120px;
+    opacity: .92;
+    margin-top:100px;
+
+    .bg-img1 {
+        background-image: url(https://themetechmount.com/html/capitallaw/images/bg-image/row-bgimage-1.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+}
+
+
+.section-title{ 
+    position: relative;
+
+    h5{
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 15px;
+        line-height: 14px;
+        margin-bottom: 11px;
+    }
+}
+
+
+.featured-content{
+    .iconImg{
+        text-align: center;
+        margin-bottom: 20px;
+        min-height: 200px;
+        img{
+            width: 230px;
+            height: 200px;
+        }
+    }
+}
+.servoce-box { 
+    .title-header{
+        margin-bottom: 28px;
+    }
+    position: relative;
+    .ttm-icon{ 
+        margin-bottom: 15px;
+     }
+}
+
+.featured-title{
+
+    h5{ font-size: 22px; line-height: 24px; margin-bottom: 12px; font-weight: 600; }
+}
+.featured-desc{
+
+    p{ padding: 3px 0; font-size: 12px;}
+}
+
+.servoce-box {
+    overflow: hidden;
+    padding: 35px 40px 30px;
+    background-color: rgba(255, 255, 255, 90%);
+    margin-bottom: 30px;
+    z-index: 11;
+    overflow: hidden;
+    min-height: 680px;
+
+    .servoce-box-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        z-index: -1;
+        overflow: hidden;
+        -webkit-transition: -webkit-transform 0.6s;
+        -moz-transition: -moz-transform 0.6s;
+        transition: transform 0.6s;
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+
+.servoce-box:hover .featured-content .iconImg img { border-radius: 12%;    }
+.servoce-box:hover .featured-title, .servoce-box:hover .featured-desc{color:#fff}
+.servoce-box:hover .btn-readmore{color:#fff}
+.servoce-box:hover .servoce-box-overlay {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+.servoce-box{
+    .servoce-box-overlay{
+        &::before{
+        position: absolute;
+        content: "";
+        top: 0;
+        left: -100%;
+        height: 100%;
+        width: 100%;
+        background: rgba(251,188,72,.75);
+        opacity: 0;
+        z-index: 11;
+    }
+    
+    }
+} 
+
+.servoce-box:hover .servoce-box-overlay:before{
+    border-radius: 0%;
+    left: 0;
+    -webkit-transition: .8s ease-out;
+    -moz-transition: .8s ease-out;
+    -o-transition: .8s ease-out;
+    -ms-transition: .8s ease-out;
+    transition: .8s ease-out;
+    opacity: 1;
+}
+.servoce-box.p-0{ opacity: .9; }
+.servoce-box.icon-position-left{
+    .ttm-icon { margin-bottom: 0; }
+    .featured-icon{ padding-right: 20px; }
+    .featured-content{ display: table-cell; vertical-align: middle;}
+    .servoce-box.icon-position-left .featured-title h5{ margin-bottom: 0; }
+    .servoce-box.icon-position-left .featured-desc p{ margin-bottom: 0; padding: 0; font-size: 15px; line-height: 22px;}
+}
+
+
+.servoce-box.icon-position-left { padding: 35px 0; }
+
+
+
+
+
+/*  SErvice end */
+
+
+.aboutSection{
+    .row.no-gutter {
+        margin-right: 0;
+        margin-left: 0;
+      
+        & > [class^="col-"],
+        & > [class*=" col-"] {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+    .boxBg{     
+      position: relative;
+      color:#fff;
+      
+      .imgBox{
+        background-image:url('http://themes.netivo.it/getleads/images/agency1.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 504px;
+        
+        @media (max-width: $sm) {            
+            height: 215px;
+            margin-left: 0px;
+         }
+      }
+      .textArea{
+          padding:30px;
+          background: rgba(5,5,5,90%);
+          min-height: 504px;
+
+          @media (max-width: $sm) {            
+            min-height: auto;
+         }
+         p{
+            @media (max-width: $sm) {            
+                font-size: 14px;                
+             }
+         }
+      }
+      h3{
+        margin:30px 0 10px 0;
+        @media (max-width: $sm) {            
+           font-size: 18px;
+         }
+      }
+    }
+    .boxBgActive{
+        position: relative;
+        .imgBox{
+            background-image:url('http://themes.netivo.it/getleads/images/agency1.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 504px;       
+        
+        @media (max-width: $sm) {            
+            height: 215px;           
+         }
+          }
+          .textArea{
+            padding:30px;
+            background: #fbbc48;
+            min-height: 504px;
+
+            @media (max-width: $sm) {            
+                min-height: auto;
+             }
+        }
+        h3{
+            margin:40px 0 10px 0;
+        }
+    }
+    
+}
